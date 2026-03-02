@@ -1,0 +1,142 @@
+{
+  "mcpServers": {
+    "supabase-db": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://USER:PASSWORD@HOST:5432/postgres"
+      ]
+    },
+    "firebase": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@firebase/mcp-server"
+      ],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "C:/path/to/your/firebase-service-account.json"
+      }
+    },
+    "bigquery": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@google-cloud/mcp-bigquery"
+      ],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "C:/path/to/your/bigquery-service-account.json"
+      }
+    },
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@github/mcp-server"
+      ],
+      "env": {
+        "GITHUB_TOKEN": "your_github_token_here"
+      }
+    },
+    "notion": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@notion/mcp-server"
+      ],
+      "env": {
+        "NOTION_API_KEY": "your_notion_api_key_here"
+      }
+    },
+    "stripe": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@stripe/mcp-server"
+      ],
+      "env": {
+        "STRIPE_API_KEY": "your_stripe_api_key_here"
+      }
+    },
+    "redis": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-server-redis"
+      ],
+      "env": {
+        "REDIS_URL": "redis://user:password@host:6379"
+      }
+    },
+    "mongodb": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-server-mongodb"
+      ],
+      "env": {
+        "MONGODB_URI": "mongodb+srv://user:password@cluster.mongodb.net"
+      }
+    },
+    "pinecone": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-server-pinecone"
+      ],
+      "env": {
+        "PINECONE_API_KEY": "your_pinecone_api_key_here"
+      }
+    },
+    "prisma": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-server-prisma"
+      ]
+    },
+    "netlify": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-server-netlify"
+      ],
+      "env": {
+        "NETLIFY_AUTH_TOKEN": "your_netlify_token_here"
+      }
+    },
+    "sonarqube": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-server-sonarqube"
+      ],
+      "env": {
+        "SONARQUBE_URL": "https://your-sonarqube-instance",
+        "SONARQUBE_TOKEN": "your_sonarqube_token_here"
+      }
+    },
+    "cloud-run": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@google-cloud/cloud-run-mcp"
+      ],
+      "env": {
+        "GOOGLE_CLOUD_PROJECT": "YOUR_PROJECT_ID",
+        "GOOGLE_CLOUD_REGION": "YOUR_REGION",
+        "DEFAULT_SERVICE_NAME": "YOUR_DEFAULT_SERVICE_NAME"
+      }
+    },
+    "gke": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@google-cloud/mcp-gke"
+      ],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "C:/path/to/your/gke-service-account.json"
+      }
+    }
+  }
+}

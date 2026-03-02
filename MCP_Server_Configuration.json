@@ -1,0 +1,6 @@
+{
+    "arize-tracing-assistant": {
+        "command": "uvx arize-tracing-assistant@latest",
+        "env": {}
+    }
+}
