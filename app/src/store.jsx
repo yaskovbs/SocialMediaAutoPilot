@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { auth, signInWithGoogle, registerWithEmail, loginWithEmail, logout } from './lib/firebase';
 
 const AppContext = createContext();
+const AuthContext = createContext();
 
 const USER_PHOTO = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/user_67d164238787c026aecaa666/0a279b84a_photo_2026-02-22_20-31-34.jpg";
 
@@ -115,6 +117,34 @@ const syncYouTube = async (channelId, apiKey) => {
         return { success: false, error: error.message };
     }
 };
+
+export function AuthProvider({ children }) {
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            setUser(user);
+            setLoading(false);
+        });
+        return unsubscribe;
+    }, []);
+
+    const value = {
+        user,
+        loading,
+        signInWithGoogle: () => signInWithGoogle().catch(console.error),
+        registerWithEmail: (email, password) => registerWithEmail(email, password).catch(console.error),
+        loginWithEmail: (email, password) => loginWithEmail(email, password).catch(console.error),
+        logout: () => logout().catch(console.error),
+    };
+
+    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+}
+
+export function useAuth() {
+    return useContext(AuthContext);
+}
 
 export function AppProvider({ children }) {
     const [videos, setVideos] = useState(() => loadFromStorage('videos', DEMO_VIDEOS));

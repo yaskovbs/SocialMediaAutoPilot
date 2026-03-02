@@ -1,4 +1,10 @@
 {
     "github.copilot.chat.agent.autoFix": true,
-    "github-actions.workflows.pinned.refresh.enabled": true
+    "github-actions.workflows.pinned.refresh.enabled": true,
+    "chat.tools.terminal.autoApprove": {
+        "/^cd backend ; npm start$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
 }

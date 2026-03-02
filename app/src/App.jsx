@@ -10,13 +10,23 @@ import ContentManager from './pages/ContentManager'
 import Settings from './pages/Settings'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
+import Login from './pages/Login'
+import { useAuth } from './store'
+import { Navigate } from 'react-router-dom'
+
+function ProtectedRoute({ children }) {
+  const { user, loading } = useAuth()
+  if (loading) return <div>טוען...</div>
+  return user ? children : <Navigate to="/login" />
+}
 
 export default function App() {
     return (
         <Routes>
+            <Route path="/login" element={<Login />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
-            <Route element={<Layout />}>
+            <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/videos" element={<Videos />} />
                 <Route path="/automation" element={<Automation />} />

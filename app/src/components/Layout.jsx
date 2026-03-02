@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { NavLink, Outlet, Link } from 'react-router-dom'
 import { useApp } from '../store'
+import { useAuth } from '../store'
 import {
     LayoutDashboard, Video, Bot, CalendarDays, TrendingUp,
     AlertTriangle, Layers, Settings, Zap, Menu, X,
@@ -20,6 +21,7 @@ const navItems = [
 
 export default function Layout() {
     const { userPhoto, settings } = useApp()
+    const { logout, user } = useAuth()
     const [mobileOpen, setMobileOpen] = useState(false)
 
     return (
@@ -47,6 +49,9 @@ export default function Layout() {
                         <p>Liav Ben Salomon</p>
                         <p>kovbs2502@gmail.com</p>
                     </div>
+                    <button onClick={logout} className="logout-btn" style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>
+                        התנתק
+                    </button>
                 </div>
 
                 {/* Navigation */}
