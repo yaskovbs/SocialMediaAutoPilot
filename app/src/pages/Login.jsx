@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../store';
 import { Link } from 'react-router-dom';
-import { Mail, Lock, User, Google } from 'lucide-react';
+import { Mail, Lock, User, Globe } from 'lucide-react';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -42,7 +42,7 @@ export default function Login() {
           className="btn"
           style={{ background: 'var(--bg-secondary)', color: 'white', width: '100%', padding: '1rem', marginBottom: '1rem', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', gap: '1rem', justifyContent: 'center' }}
         >
-          <Google size={20} />
+          <Globe size={20} />
           התחבר עם Google
         </button>
 
